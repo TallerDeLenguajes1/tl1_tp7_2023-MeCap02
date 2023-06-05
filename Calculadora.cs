@@ -1,5 +1,5 @@
 ﻿namespace EspacioCalculadora{
-
+//ignorar
 public class Calculadora{
     private double dato=0;
     public Calculadora()=>dato=0;
