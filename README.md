@@ -1,0 +1,1 @@
+- Utilizamos --output para especificar la localizacion en la que seran generados los archivos #C, el directorio actual es el default
