@@ -1,49 +1,13 @@
-using EspacioCalculadora;
-
-Calculadora cal=new Calculadora();
-int aux=1;
-string? num;
-double temp;
-
-
-while(aux!=0){
-    Console.WriteLine("\n---MENU---");
-    Console.WriteLine("\n1=Sumar\n2=Restar\n3=Multiplicar\n4=Dividir\n5=Reiniciar Valor");
-    string? extra=Console.ReadLine();
-    while(!int.TryParse(extra,out aux)){
-        Console.WriteLine("\nIngrese un numero correcto");
-        extra=Console.ReadLine();
-    }
-    Console.WriteLine("Ingrese un numero");
-    num=Console.ReadLine();
-    while(!double.TryParse(num,out temp)){
-        Console.WriteLine("\nIngrese un numero valido\n");
-        num=Console.ReadLine();
-    }
-    switch(aux){
-        case 1:
-            cal.sumar(temp);
-            break;
-        case 2:
-            cal.restar(temp);
-            break;
-        case 3:
-            cal.multiplicar(temp);
-            break;
-        case 4:
-            cal.dividir(temp);
-            break;
-        case 5:
-            cal.limpiar();
-            break;
-        default:
-            break;
-    }
-    Console.WriteLine("\nResultado guardado:"+cal.Resultado);
-    Console.WriteLine("\nDesea continuar?\n0=Salir\n1=Continuar");
-    extra=Console.ReadLine();
-    while(!int.TryParse(extra,out aux)){
-        Console.WriteLine("\nIngrese un numero correcto");
-        extra=Console.ReadLine();
+Empleado primerEmpleado=new Empleado("Pedro","Gimenez",new DateTime(1987,05,24),'S','M',new DateTime(2011,07,11),150000,cargos.Auxiliar);
+Empleado segundEmpleado=new Empleado("Maria","Ortiz",new DateTime(1991,02,28),'C','F',new DateTime(2014,04,28),200000,cargos.Especialista);
+Empleado tercerEmpleado=new Empleado("Jorge","Ibanez",new DateTime(1993,06,17),'C','M',new DateTime(2014,07,30),150000,cargos.Ingeniero);
+Empleado[] empleados={primerEmpleado,segundEmpleado,tercerEmpleado};
+Empleado empleadoViejo=primerEmpleado;
+Console.WriteLine("\nSalario total de los empleados: "+(primerEmpleado.salario() + segundEmpleado.salario() + tercerEmpleado.salario()));
+foreach(Empleado empleado in empleados){
+    if(empleado.salario() < empleadoViejo.retiro()){
+        empleadoViejo=empleado;
     }
 }
+Console.WriteLine("\nInformacion del empleado mas viejo\n");
+empleadoViejo.mostrarDatos();
